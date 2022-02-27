@@ -63,12 +63,17 @@ namespace Wallpaper
             {
                 logger.LogCritical(ex, "Fatal error");
             }
+            finally
+            {
+                Console.WriteLine("Enter for exit console..");
+                Console.ReadLine();
+            }
         }
 
         private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<Startup>();
-            services.ConfigureAndValidate<WallPaperConfig>(configuration.GetSection(WallPaperConfig.SectionName));
+            ConfigureAndValidate<WallPaperConfig>(services, configuration.GetSection(WallPaperConfig.SectionName));
 
             services.AddHttpClient<YandexService>();
             services.AddScoped<WallPaperGenerator>();
@@ -76,11 +81,8 @@ namespace Wallpaper
             // Place the following after all AddHttpClient registrations.
             services.RemoveAll<IHttpMessageHandlerBuilderFilter>();
         }
-    }
 
-    static class MyClass
-    {
-        public static void ConfigureAndValidate<T>(this IServiceCollection services, IConfigurationSection section)
+        private static void ConfigureAndValidate<T>(IServiceCollection services, IConfiguration section)
             where T : class, IValidateOptions<T>
         {
             services.Configure<T>(section);
