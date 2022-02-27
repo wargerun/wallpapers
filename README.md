@@ -40,3 +40,8 @@
    1. ПКМ по `Wallpaper.exe` => `Отправить` => `На рабочий стол`
 2. В адресную строку проводника вставте %AppData%\Microsoft\Windows\Start Menu\Programs\Startup и нажмите клавишу Enter, или в меню “Выполнить” (выполнить вызывается клавишами Win+R) введите  shell:startup и нажмите Enter.
 3. Откроется папка автозагрузки, копируйте сюда ярлык
+
+
+## Настроить ОС для автоматической смены изображений рабочего стола
+
+https://www.endsight.net/blog/how-to-create-a-custom-windows-10-slideshow-background-lock-screen
